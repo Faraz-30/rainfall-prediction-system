@@ -1,15 +1,12 @@
 import streamlit as st
 import pandas as pd
-from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 import numpy as np
 
 st.title("Rainfall Prediction System")
 
-# Load dataset
 data = pd.read_csv("weatherAUS.csv")
 
-# Preprocess
 data = data.dropna()
 data['RainTomorrow'] = data['RainTomorrow'].map({'Yes':1,'No':0})
 
@@ -22,7 +19,6 @@ features = [
 X = data[features]
 y = data['RainTomorrow']
 
-# Train model
 model = RandomForestClassifier()
 model.fit(X,y)
 
